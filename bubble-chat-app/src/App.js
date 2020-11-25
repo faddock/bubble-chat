@@ -30,7 +30,9 @@ function App() {
       <Input placeholder="" inputProps={{ 'aria-label': 'description' }} value={input} onChange={event => setInput(event.target.value)} />
       <Button disabled={!input.trim()} variant='contained' type="submit" onClick={sendMessage}>my button</Button>
     </form>   
+    
      {/*messages themsleves*/}
+
      {messages.map(message => (
        <p>{message}</p>
      ))} 
