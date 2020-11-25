@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
+import Message from './Message';
 
 
 
@@ -33,8 +34,9 @@ function App() {
     
      {/*messages themsleves*/}
 
-     {messages.map(message => (
-       <p>{message}</p>
+     {//maps messages to an array in Message.js.
+     messages.map(message => (
+       <Message text={message}/>
      ))} 
 
     </div>
