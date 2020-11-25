@@ -9,7 +9,7 @@ function Message({username, message}) {
             <Card className={isUser ? "message__userCard" : "message__guestCard"}> {/*user or guest card format */}          
                 <CardContent>
                     <Typography className="message__card" color="textSecondary" variant="h5">
-                        {message.username}: {message.text}
+                        {message.username}: {message.message}
                     </Typography>
                     
                 </CardContent>

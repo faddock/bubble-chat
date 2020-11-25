@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import {Button, Input} from '@material-ui/core';
 import Message from './Message';
+import db from './firebase';
 
 
 
@@ -11,14 +12,11 @@ function App() {
   //input constant 
   const[input, setInput] = useState('');
   //stores messages in an array which has default messages.
-  const [messages, setMessages] = useState([
-    {username: 'suyash', text: 'Welcome to Bubbles'},
-    {username: 'vijay', text: 'suyash is cool'}
-  ]);
+  const [messages, setMessages] = useState([]);
   //set username.
   const [username, setUsername] = useState('');
   
-  //useEffect - runs code based on a condition
+  //useEffect - runs code based on a condition; can have multiple
   //useState - variable in react
 
 
@@ -29,11 +27,18 @@ function App() {
     setUsername(prompt('Please name'))
 
   }, [] ) // condition
+
+  useEffect(() => {
+    //this is called our listener
+    db.collection('messages').onSnapshot(snapshot => {      //snapshot is the entire list
+      setMessages(snapshot.docs.map(doc => doc.data()))       // docs gives us each doc
+    })
+  }, [] )
   
   //send Message event
   const sendMessage = (event) => {
     event.preventDefault();     //stops form submit refreshing page
-    setMessages([...messages, {username: username, text: input}
+    setMessages([...messages, {username: username, message: input}
     ]);      //...messages allows previous messages to remain.
     setInput('');     //clears the input for new.
   }
