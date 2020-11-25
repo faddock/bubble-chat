@@ -1,8 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
+import React, { useState, useEffect } from 'react';
+import {Button, Input} from '@material-ui/core';
 import Message from './Message';
 
 
@@ -12,14 +11,32 @@ function App() {
   //input constant 
   const[input, setInput] = useState('');
   //stores messages in an array which has default messages.
-  const [messages, setMessages] = useState(['Welcome to Bubbles','Suyash']);
+  const [messages, setMessages] = useState([
+    {username: 'suyash', text: 'Welcome to Bubbles'},
+    {username: 'vijay', text: 'suyash is cool'},
+  ]);
+  //set username.
+  const [username, setUsername] = useState('');
+  
+  //useEffect - runs code based on a condition
+  //useState - variable in react
+
+
+
+  useEffect(() => {
+    //run code here..
+    //if [] is blank, code runs only once when app loads
+    setUsername(prompt('Please name'))
+
+  }, [] ) // condition
+  
   //send Message event
   const sendMessage = (event) => {
     event.preventDefault();     //stops form submit refreshing page
-    setMessages([...messages, input]);      //...messages allows previous messages to remain.
+    setMessages([...messages, {username: username, text: input}]);      //...messages allows previous messages to remain.
     setInput('');     //clears the input for new.
   }
-  console.log(messages);
+  
   
   
   
@@ -27,6 +44,7 @@ function App() {
     
     <div className="App">
       <h1>Hello Bubbles users!</h1>
+      <h2> hi {username}</h2>
     <form> 
       <Input placeholder="" inputProps={{ 'aria-label': 'description' }} value={input} onChange={event => setInput(event.target.value)} />
       <Button disabled={!input.trim()} variant='contained' type="submit" onClick={sendMessage}>my button</Button>
@@ -36,7 +54,7 @@ function App() {
 
      {//maps messages to an array in Message.js.
      messages.map(message => (
-       <Message text={message}/>
+       <Message username={message.username} text={message.text}/>
      ))} 
 
     </div>
