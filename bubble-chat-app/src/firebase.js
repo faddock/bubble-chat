@@ -1,7 +1,7 @@
 import firebase from "firebase"
 
 const firebaseApp = firebase.initializeApp({
-    //snippet for my firebase Config object
+    //snippet for my firebase Config object from app settings.
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     apiKey: "AIzaSyCi0x993teNtdEBgpGPmS4XLeg-YM620lA",
     authDomain: "bubble-chat-46510.firebaseapp.com",
