@@ -2,6 +2,8 @@
 import './App.css';
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+
 
 
 
@@ -25,8 +27,8 @@ function App() {
     <div className="App">
       <h1>Hello Bubbles users!</h1>
     <form> 
-      <input value={input} onChange={event => setInput(event.target.value)}></input>
-      <Button variant='contained' type="submit" onClick={sendMessage}>my button</Button>
+      <Input placeholder="" inputProps={{ 'aria-label': 'description' }} value={input} onChange={event => setInput(event.target.value)} />
+      <Button disabled={!input.trim()} variant='contained' type="submit" onClick={sendMessage}>my button</Button>
     </form>   
      {/*messages themsleves*/}
      {messages.map(message => (
