@@ -13,7 +13,7 @@ function App() {
   //stores messages in an array which has default messages.
   const [messages, setMessages] = useState([
     {username: 'suyash', text: 'Welcome to Bubbles'},
-    {username: 'vijay', text: 'suyash is cool'},
+    {username: 'vijay', text: 'suyash is cool'}
   ]);
   //set username.
   const [username, setUsername] = useState('');
@@ -33,7 +33,8 @@ function App() {
   //send Message event
   const sendMessage = (event) => {
     event.preventDefault();     //stops form submit refreshing page
-    setMessages([...messages, {username: username, text: input}]);      //...messages allows previous messages to remain.
+    setMessages([...messages, {username: username, text: input}
+    ]);      //...messages allows previous messages to remain.
     setInput('');     //clears the input for new.
   }
   
@@ -54,7 +55,8 @@ function App() {
 
      {//maps messages to an array in Message.js.
      messages.map(message => (
-       <Message username={message.username} text={message.text}/>
+       <Message username={username} message={message}/>
+       //username is the current instance, message is the list of previous usernames and texts.
      ))} 
 
     </div>
