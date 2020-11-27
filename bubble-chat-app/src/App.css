@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+.app__form {
+  padding: 20px;
+  position: fixed;
+  bottom: 0;  /*fixed at the bottom*/
+  z-index: 1; /*comes in front due to priority*/
+  width: 96%;
+  align-self: center;
+  margin: 20px;
+  background-color: lightgoldenrodyellow;
+}
+
+.app__formControl {
+  display: flex !important; /*!important prevents materialUI overriding it*/
+  flex-direction: row !important;
+}
+
+.app__input {
+  flex: 1;  /*stretches it across width*/
+}
+.app__iconButton {
+  flex: 0;  /*keeps icon at default size*/
+} 
